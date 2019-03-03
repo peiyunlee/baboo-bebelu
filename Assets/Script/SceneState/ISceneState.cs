@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ISceneState : MonoBehaviour
+public class ISceneState
 {
     //狀態名稱
-    private int m_StateName =(int)ESceneState.StartState;
-    public int StateName{
+    private string m_StateName ="ISceneState";
+    public string StateName{
         get{return m_StateName;}
         set{m_StateName = value;}
     }

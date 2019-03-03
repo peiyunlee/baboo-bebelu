@@ -5,7 +5,7 @@ using UnityEngine;
 public class StartState : ISceneState
 {
     public StartState(SceneStateController Controller):base(Controller){
-        this.StateName=(int)ESceneState.StartState;
+        this.StateName="StartState";
         Debug.Log("StartState建構");
     }
 

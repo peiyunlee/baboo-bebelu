@@ -16,7 +16,7 @@ public class GameLoop : MonoBehaviour
     void Start()
     {
         //設定起始場景
-        m_SceneStateController.SetState(new StartState(m_SceneStateController));
+        m_SceneStateController.SetState(new StartState(m_SceneStateController),"");
         Debug.Log("gameloopstart");
     }
     void Update()

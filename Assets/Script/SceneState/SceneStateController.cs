@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneStateController : MonoBehaviour
+public class SceneStateController
 {
     private ISceneState m_State;
     private bool m_bRunBegin=false;
@@ -11,15 +11,11 @@ public class SceneStateController : MonoBehaviour
     public SceneStateController(){Debug.Log("SceneStateController建構");}
 
     //設定狀態
-    public void SetState(ISceneState State){
-        State.StateName++;
-        if(State.StateName>(int)ESceneState.ResultState)
-            State.StateName=(int)ESceneState.StartState;
-        Debug.Log("SetState"+State.StateName);
+    public void SetState(ISceneState State,string LoadSceneName){
+        Debug.Log("SetState"+LoadSceneName);
         m_bRunBegin=false;
-
         //載入場景
-        LoadScene(State.StateName);
+        LoadScene(LoadSceneName);
         
         //通知前一個State結束
         if(m_State!=null){
@@ -32,8 +28,10 @@ public class SceneStateController : MonoBehaviour
     }
 
     //載入場景
-    private void LoadScene(int StateName){
-        SceneManager.LoadScene(StateName);
+    private void LoadScene(string LoadStateName){
+        if(LoadStateName==null||LoadStateName.Length==0)
+            return;
+        SceneManager.LoadScene(LoadStateName);
         Debug.Log("LoadScene");
     }
 
@@ -46,5 +44,9 @@ public class SceneStateController : MonoBehaviour
             Debug.Log("通知新的State開始");
         }
         Debug.Log("StateUpdate");
+
+        if(m_State!=null){
+            m_State.StateUpdate();
+            Debug.Log("m_State.StateUpdate");}
     }
 }
