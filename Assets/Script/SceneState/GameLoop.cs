@@ -11,11 +11,13 @@ public class GameLoop : MonoBehaviour
     {
         //轉換場景不會被刪除
         GameObject.DontDestroyOnLoad(this.gameObject);
+        Debug.Log("gameloopawake");
     }
     void Start()
     {
         //設定起始場景
         m_SceneStateController.SetState(new StartState(m_SceneStateController));
+        Debug.Log("gameloopstart");
     }
     void Update()
     {
