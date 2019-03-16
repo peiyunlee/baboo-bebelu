@@ -8,7 +8,7 @@ public class SceneStateController
     private ISceneState m_State;
     private bool m_bRunBegin=false;
 
-    public SceneStateController(){Debug.Log("SceneStateController建構");}
+    //public SceneStateController(){Debug.Log("SceneStateController建構");}
 
     //設定狀態
     public void SetState(ISceneState State,string LoadSceneName){

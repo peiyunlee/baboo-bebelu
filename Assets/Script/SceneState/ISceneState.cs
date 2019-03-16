@@ -10,17 +10,16 @@ public class ISceneState
         get{return m_StateName;}
         set{m_StateName = value;}
     }
-
-    //控制者
     protected SceneStateController m_Controller;
-
+    //控制者
+    
     //建構者
     public ISceneState(SceneStateController Controller){
         m_Controller=Controller;
-        Debug.Log("ISceneState建構");
     }
     //開始
-    public virtual void StateBegin(){}
+    public virtual void StateBegin(){
+    }
     //結束
     public virtual void StateEnd(){}
 
