@@ -10,7 +10,7 @@ public class IPlayer : MonoBehaviour
     public IGameSystem iGameSystem = null;
     public UIManager uIManager = null;
     public List<PlayerInputInfo> InputResults { get { return input.InputResults; } }
-
+    List<MapPosition> m_mapStartPos = new List<MapPosition>();
     public Vector2 playerMapPos;
 
     void Awake()
@@ -26,17 +26,32 @@ public class IPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //test
+        // if(GameManager.IsGameWin)
+        //     uIManager.ShowGameResult("Player2",iGameSystem.goal);
     }
-    
-    public void SetStartPos(){
-        // anim.transformPosition=playerMapPos;
+
+    public void SetStartPos(List<MapPosition> mapStartPos)
+    {
+        int k;
+        if (input.PlayerInputString == "Player1")   k = 0;
+        else k = 1;
+        m_mapStartPos.Add(mapStartPos[k]);
+        playerMapPos = new Vector2(m_mapStartPos[0].mapPosX * 1.8f, m_mapStartPos[0].mapPosY * -1.8f);
+        anim.transformPosition = playerMapPos;
     }
-    // private void OnTriggerEnter2D (Collider2D other) {
-    //     if (other.CompareTag ("destination")) {
-    //         GameEnd (Input.inputString);
-    //     }
-    // }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("enter");
+        if (other.CompareTag("Goal"))
+        {
+            Debug.Log("enter2");
+            GameManager.IsGameWin = true;
+            uIManager.ShowGameResult(input.PlayerInputString,iGameSystem.goal);
+            //test
+            // uIManager.ShowGameResult("Player1", iGameSystem.goal);
+        }
+    }
     // void GameEnd (string winner) {
     //     GameManager.instance.GameGetWinner (winner);
     // }

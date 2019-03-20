@@ -5,31 +5,32 @@ using UnityEngine.UI;
 
 public class ItemsManager : MonoBehaviour
 {
-    public int rightThing{ get { return x; }} 
-    int x;
+    public int rightThing { get { return goal; } }
+    int goal;
     public Image GoalImage;
-    public Sprite [] ItemsSprite = new Sprite[5];
-    public GameObject Prefab ;
-    Sprite prefabSprite;
+    public Sprite[] ItemsSprite = new Sprite[5];
+    public GameObject Prefab;
+    SpriteRenderer prefabSpriterenderer;
     [SerializeField]
-    public List<Vector2> ItemsPos=new List<Vector2>();
+    public List<MapPosition> ItemsPos = new List<MapPosition>();
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("aa");
-        x = Random.Range( 0, 5 );
-        GoalImage.sprite=ItemsSprite[x];//產生UI
-        // prefabSprite=Prefab.GetComponent<Sprite>();
-        // Instantiate(Prefab, new Vector2(1.8f,-1.8f),new Quaternion(0,0,0,0));
-    }
-    public void ItemsGnerator(){
+        goal = Random.Range(0, 5);
+        GoalImage.sprite = ItemsSprite[goal];//產生UI
         
-        // for(int i=0;i<5;i++)
-        // {
-        //     // prefabSprite=ItemsSprite[i];
-        //     // Prefab.name="Item1";
-        //     Instantiate(Prefab, ItemsPos[i],new Quaternion(0,0,0,0));
-        // }
+        prefabSpriterenderer = Prefab.GetComponent<SpriteRenderer>();
+    }
+    public int ItemsGnerator(List<MapPosition> itemMapPos)
+    {
+        for(int i=2;i<7;i++)
+        {
+            prefabSpriterenderer.sprite=ItemsSprite[i-2];
+            Prefab.name="Item"+(i-1);
+            if(i==goal+2) Prefab.gameObject.tag="Goal";
+            Instantiate(Prefab, new Vector2(1.8f * itemMapPos[i].mapPosX, -1.8f * itemMapPos[i].mapPosY),new Quaternion(0,0,0,0)); 
+        }
+        return goal;
     }
     // Update is called once per frame
     void Update()

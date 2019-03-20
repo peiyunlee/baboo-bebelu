@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
 
     protected IPlayer parent = null;
     public IPlayer Parent { set { if (parent == null) parent = value; } }
-    public string PlayerInputString { set { playerInputString = value; } }
+    public string PlayerInputString { set { playerInputString = value; } get { return playerInputString; }}
     [SerializeField]
     private string playerInputString;
     [SerializeField]

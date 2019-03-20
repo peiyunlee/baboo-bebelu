@@ -25,6 +25,7 @@ public class MusicManager : MonoBehaviour
     public void PlaySong(){
         song.Play();
         isSongPlay=true;
+        GameManager.IsSongPlay=true;
     }
     public void PauseSong(){
         song.Pause();

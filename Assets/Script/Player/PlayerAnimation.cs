@@ -40,7 +40,7 @@ public class PlayerAnimation : MonoBehaviour
     }
     void Update()
     {
-        // this.gameObject.transform.position=transformPosition;
+        this.gameObject.transform.position=transformPosition;
         if (GameManager.IsSongPlay)
         {
             inputState = parent.iGameSystem.inputSystem.ConditionType;
