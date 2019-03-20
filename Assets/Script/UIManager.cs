@@ -5,16 +5,51 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject startScreen;
+    public GameObject startScreen=null;
     [SerializeField]
     private List<GameObject> screenHistory;
     public List<Sprite> introImageHistory = new List<Sprite>();
+    public Image [] InputResultImage = new Image[4];
+    public Sprite [] inputResultsSprite = new Sprite[6];
     int currentIntroImageNumber = 1;
-    Image introImage ;
+    Image introImage=null;
+
     void Awake()
     {
-        this.screenHistory = new List<GameObject> { this.startScreen };
-        introImage = GameObject.Find("Introduction").GetComponent<Image>();
+        if(GameManager.state=="Start"){
+            this.screenHistory = new List<GameObject> { this.startScreen };
+            introImage = GameObject.Find("Introduction").GetComponent<Image>();
+        }
+    }
+    void Start()
+    {
+        if(GameManager.state=="Main"){
+            
+        }
+    }
+
+    //Start
+    public void OnStartGameBtnClick(){   //進入關卡
+       GameManager.m_GoState=2;
+    }
+
+    //Main
+    public void ShowColorResult(List<PlayerInputInfo> inputresults,string playername){
+        foreach (var item in inputresults)
+        {
+            int index,k=0;
+            if(playername=="Player2") k=2;
+            if(item.inputCondition==EInputCondition.ONE)
+                index=0+k;
+            else index=1+k;
+            InputResultImage[index].sprite=inputResultsSprite[(int)item.color];
+        }
+    }
+    public void ShowColorResult(string playername){
+        int k=0;
+        if(playername=="Player2") k=2;
+        for(int i=0;i<2;i++)
+            InputResultImage[i+k].sprite=null;
     }
 
     public void ToScreen(GameObject target)
