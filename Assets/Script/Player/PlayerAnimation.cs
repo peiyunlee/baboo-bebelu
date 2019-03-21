@@ -23,11 +23,13 @@ public class PlayerAnimation : MonoBehaviour
     private List<PlayerInputInfo> inputResults = new List<PlayerInputInfo>();
     private bool bFcolorScan;
     private bool bScolorScan;
-    List<Vector2Int> steps = new List<Vector2Int>();
+    List<Vector2> stepsPosition = new List<Vector2>();  //儲存每一步的距離
     Animator anim;
     public float ANIMATE_TIME = 2.0f;
-    public Vector2 transformPosition;
-
+    // public List<MapPosition> mapPosition = new List<MapPosition>();
+    [SerializeField]
+    public MapPosition playerMapPosition = new MapPosition();   //儲存idle時Map位置
+    Map mapInfo = new Map();
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -40,7 +42,6 @@ public class PlayerAnimation : MonoBehaviour
     }
     void Update()
     {
-        this.gameObject.transform.position=transformPosition;
         if (GameManager.IsSongPlay)
         {
             inputState = parent.iGameSystem.inputSystem.ConditionType;
@@ -50,6 +51,7 @@ public class PlayerAnimation : MonoBehaviour
             switch (playerState)
             {
                 case EPlayerState.IDLE:
+                    anim.SetBool("BWalk", false);
                     break;
                 case EPlayerState.WALK:
                     if (!bGetInput)
@@ -69,7 +71,7 @@ public class PlayerAnimation : MonoBehaviour
                         }
                         else    //一定兩個都掃描完
                         {
-                            //依儲存路線行動播動畫
+                            anim.SetBool("BWalk", true);
                         }
                     }
                     break;
@@ -81,8 +83,29 @@ public class PlayerAnimation : MonoBehaviour
 
         bool FindNextStep(EColor color) //一個frame掃依次
         {
-            return true;    //未掃完
-            //return false;   //已掃完
+            int x = playerMapPosition.mapIndexC_X, y = playerMapPosition.mapIndexR_Y;
+            // if(y-1>=0&&mapInfo.Maps[y-1][x]==(int)color)
+            // {
+            //     stepsPosition.Add(new Vector2(x*1.8f,(y-1)*-1.8f)); 
+            //     return true;    //未掃完
+            // }
+            // else if(x+1<=51&&mapInfo.Maps[y][x+1]==(int)color)
+            // {
+            //     stepsPosition.Add(new Vector2((x+1)*1.8f,y*-1.8f));
+            //     return true;    //未掃完
+            // }
+            // else if(y+1<=50&&mapInfo.Maps[y+1][x]==(int)color)
+            // {
+                // stepsPosition.Add(new Vector2(x*1.8f,(y+1)*-1.8f));
+            //     return true;    //未掃完
+            // }
+            // else if(x-1>=0&&mapInfo.Maps[y][x-1]==(int)color)
+            // {
+                // stepsPosition.Add(new Vector2((x-1)*1.8f,y*-1.8f));
+            //     return true;    //未掃完
+            // }
+
+            return false;   //已掃完
         }
     }
 }

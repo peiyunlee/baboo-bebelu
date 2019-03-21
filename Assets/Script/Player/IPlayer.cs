@@ -10,8 +10,9 @@ public class IPlayer : MonoBehaviour
     public IGameSystem iGameSystem = null;
     public UIManager uIManager = null;
     public List<PlayerInputInfo> InputResults { get { return input.InputResults; } }
-    List<MapPosition> m_mapStartPos = new List<MapPosition>();
-    public Vector2 playerMapPos;
+    // List<MapPosition> m_mapStartPos = new List<MapPosition>();
+    MapPosition m_mapStartPos;
+    public Vector2 playerPos;
 
     void Awake()
     {
@@ -26,9 +27,7 @@ public class IPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //test
-        // if(GameManager.IsGameWin)
-        //     uIManager.ShowGameResult("Player2",iGameSystem.goal);
+        
     }
 
     public void SetStartPos(List<MapPosition> mapStartPos)
@@ -36,9 +35,13 @@ public class IPlayer : MonoBehaviour
         int k;
         if (input.PlayerInputString == "Player1")   k = 0;
         else k = 1;
-        m_mapStartPos.Add(mapStartPos[k]);
-        playerMapPos = new Vector2(m_mapStartPos[0].mapPosX * 1.8f, m_mapStartPos[0].mapPosY * -1.8f);
-        anim.transformPosition = playerMapPos;
+        // m_mapStartPos.Add(mapStartPos[k]);
+        m_mapStartPos=new MapPosition(mapStartPos[k].mapIndexC_X,mapStartPos[k].mapIndexR_Y);
+        // playerPos = new Vector2(m_mapStartPos[0].mapPosX * 1.8f, m_mapStartPos[0].mapPosY * -1.8f);
+        playerPos = new Vector2(m_mapStartPos.mapIndexC_X * 1.8f, m_mapStartPos.mapIndexR_Y * -1.8f);
+        // anim.mapPosition.Add(m_mapStartPos[0]);
+        anim.playerMapPosition=m_mapStartPos;
+        this.gameObject.transform.position=playerPos;
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -47,12 +50,9 @@ public class IPlayer : MonoBehaviour
         {
             Debug.Log("enter2");
             GameManager.IsGameWin = true;
+            GameManager.IsSongPlay = false;
             uIManager.ShowGameResult(input.PlayerInputString,iGameSystem.goal);
-            //test
-            // uIManager.ShowGameResult("Player1", iGameSystem.goal);
+            iGameSystem.musicManager.StopSong();
         }
     }
-    // void GameEnd (string winner) {
-    //     GameManager.instance.GameGetWinner (winner);
-    // }
 }

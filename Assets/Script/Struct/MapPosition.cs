@@ -1,9 +1,9 @@
 [System.Serializable]
 public struct MapPosition
 {
-    public int mapPosX,mapPosY;
-    public MapPosition(int mapPosX,int mapPosY){
-        this.mapPosX=mapPosX;
-        this.mapPosY=mapPosY;
+    public int mapIndexC_X,mapIndexR_Y;
+    public MapPosition(int mapIndexC_X,int mapIndexR_Y){
+        this.mapIndexC_X=mapIndexC_X;
+        this.mapIndexR_Y=mapIndexR_Y;
     }   
 }

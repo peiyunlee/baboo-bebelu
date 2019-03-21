@@ -36,7 +36,7 @@ public class IGameSystem : MonoBehaviour
             y = Random.Range(0, 50);
             foreach (var item in mapStartPos)
             {
-                if (item.mapPosX == x && item.mapPosY == y)
+                if (item.mapIndexC_X == x && item.mapIndexR_Y == y)
                 {
                     flag = true;
                     break;
@@ -71,7 +71,7 @@ public class IGameSystem : MonoBehaviour
                 y = Random.Range(0, 50);
                 foreach (var item in mapStartPos)
                 {
-                    if (item.mapPosX == x && item.mapPosY == y)
+                    if (item.mapIndexC_X == x && item.mapIndexR_Y == y)
                     {
                         flag = true;
                         break;
