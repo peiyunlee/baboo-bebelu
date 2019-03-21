@@ -21,7 +21,6 @@ public class Rolling : MonoBehaviour
             Rect r = this.img.uvRect;
             if (r.x >= 0.8f){
                 r.x = 0;
-                Debug.Log("10");
             }
             r.x += s;
             this.img.uvRect = r;

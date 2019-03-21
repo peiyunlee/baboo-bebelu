@@ -206,9 +206,9 @@ MonoBehaviour:
   inputState: 0
   inputResults: []
   ANIMATE_TIME: 2
-  mapPosition:
-    mapPosX: 0
-    mapPosY: 0
+  playerMapPosition:
+    mapIndexC_X: 0
+    mapIndexR_Y: 0
 --- !u!61 &7447811645297627858
 BoxCollider2D:
   m_ObjectHideFlags: 0

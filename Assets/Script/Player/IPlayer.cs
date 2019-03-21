@@ -9,7 +9,8 @@ public class IPlayer : MonoBehaviour
     PlayerAnimation anim;
     public IGameSystem iGameSystem = null;
     public UIManager uIManager = null;
-    public List<PlayerInputInfo> InputResults { get { return input.InputResults; } }
+    [SerializeField]  
+    public List<PlayerInputInfo> InputResults{ get { return input.InputResults; } }
     // List<MapPosition> m_mapStartPos = new List<MapPosition>();
     MapPosition m_mapStartPos;
     public Vector2 playerPos;
