@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    protected IGameSystem parent = null;
-    public IGameSystem Parent { set { if (parent == null) parent = value; } }
     AudioSource song;
     float songPosition;
-    public bool isSongPlay;
+    bool isSongPlay;
     public float GetSongPosition { get { return songPosition; } }
 
     void Start()
@@ -20,7 +18,7 @@ public class MusicManager : MonoBehaviour
     void Update()
     {
         if(isSongPlay)
-            songPosition = song.time; 
+            songPosition = song.time;
     }
     public void PlaySong(){
         song.Play();

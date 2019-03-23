@@ -4,33 +4,35 @@ using UnityEngine;
 
 public class IGameSystem : MonoBehaviour
 {
-
-    float songPosition;
-    // Start is called before the first frame update
-    IPlayer Player1;
-    IPlayer Player2;
+    IPlayer iPlayer1;
+    IPlayer iPlayer2;
     public MusicManager musicManager;
     public InputSystem inputSystem;
     public ItemsManager itemsManager;
-
-    public Timer timer;
+    UIManager uIManager;
+    Timer m_timer;
     [SerializeField]
-    List<MapPosition> mapStartPos = new List<MapPosition>();
+    public List<MapPosition> mapStartPos = new List<MapPosition>();
     bool flag=false;
     public int goal;
+    int conditionType;
+    public int GetConditionType {get{return conditionType;}}
+    float songPosition;
+    public float GetSongPosition{get{return songPosition;}}
     void Awake()
     {
         musicManager = GetComponent<MusicManager>();
+        uIManager = GetComponent<UIManager>();
         itemsManager = GetComponent<ItemsManager>();
         inputSystem = GetComponent<InputSystem>();
-        timer = GetComponent<Timer>();
-        Player1 = GameObject.Find("Player1").GetComponent<IPlayer>();
-        Player2 = GameObject.Find("Player2").GetComponent<IPlayer>();
+        m_timer = GetComponent<Timer>();
+        iPlayer1 = GameObject.Find("Player1").GetComponent<IPlayer>();
+        iPlayer2 = GameObject.Find("Player2").GetComponent<IPlayer>();
     }
     void Start()
     {
         int x, y;
-        for (int i = 0; i < 2; i++)
+        for (var i = 0; i < 2; i++)
         {
             x = Random.Range(0, 51);
             y = Random.Range(0, 50);
@@ -45,27 +47,40 @@ public class IGameSystem : MonoBehaviour
             if (flag) i -= 1;
             else mapStartPos.Add(new MapPosition(x, y));
         }
-        Player1.SetStartPos(mapStartPos);
-        Player2.SetStartPos(mapStartPos);
+        iPlayer1.SetStartPos(mapStartPos);
+        iPlayer2.SetStartPos(mapStartPos);
         flag=false;
+        m_timer.PlayTimer();
     }
     void Update()
     {
-        ///TEST
-        if(Input.GetButtonDown("P"))  GameManager.IsGameStartflag=true;
-        if(Input.GetButtonDown("O"))  GameManager.IsGameWin=true;
-        if(Input.GetButtonDown("I"))  GameManager.IsGameEnd=true;
+        // ///TEST
+        // if(Input.GetButtonDown("P"))  GameManager.IsGameWin=true;
         if (GameManager.IsGameStartflag)
         {
-            //倒數完
             musicManager.PlaySong();
             GameManager.IsGameStartflag = false;
-
         }
         else if (!GameManager.IsGameStartflag&&!flag)
         {
-            int x, y;
-            for (int i = 0; i < 5; i++)
+            RandomItems();
+            goal=itemsManager.ItemsGnerator(mapStartPos);
+            flag=true;
+            uIManager.ShowArrow(mapStartPos[0],iPlayer1.WhichIsNearestItem(mapStartPos[0]),"Player1");
+            uIManager.ShowArrow(mapStartPos[1],iPlayer2.WhichIsNearestItem(mapStartPos[1]),"Player2");
+        }
+        if (GameManager.IsGameEnd)       //換場景
+            GameManager.m_GoState = 1;
+        if (GameManager.IsSongPlay)
+        {
+            conditionType=inputSystem.GetConditionType;
+            songPosition=musicManager.GetSongPosition;
+            inputSystem.SongPosition = songPosition;
+        }
+    }
+    void RandomItems(){
+        int x, y;
+            for (var i = 0; i < 5; i++)
             {
                 x = Random.Range(0, 51);
                 y = Random.Range(0, 50);
@@ -80,15 +95,6 @@ public class IGameSystem : MonoBehaviour
                 if (flag) i -= 1;
                 else mapStartPos.Add(new MapPosition(x, y));
             }
-            goal=itemsManager.ItemsGnerator(mapStartPos);
-            flag=true;
-        }
-        if (GameManager.IsGameEnd)       //換場景
-            GameManager.m_GoState = 1;
-        if (GameManager.IsSongPlay)
-        {
-            songPosition = musicManager.GetSongPosition;
-            inputSystem.SongPosition = songPosition;
-        }
     }
+
 }

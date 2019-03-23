@@ -5,7 +5,7 @@ public class Rolling : MonoBehaviour
 {
 
     RawImage img;
-    float speed = 0.1725f;
+    float speed = 0.1667f;
     // Use this for initialization
     void Start()
     {

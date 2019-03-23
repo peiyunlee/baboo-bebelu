@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class ItemsManager : MonoBehaviour
 {
-    public int rightThing { get { return goal; } }
     int goal;
-    public Image GoalImage;
-    public Sprite[] ItemsSprite = new Sprite[5];
-    public GameObject Prefab;
-    SpriteRenderer prefabSpriterenderer;
     [SerializeField]
-    public List<MapPosition> ItemsPos = new List<MapPosition>();
-    // Start is called before the first frame update
+    Image GoalImage;
+    [SerializeField]
+    Sprite[] ItemsSprite = new Sprite[5];
+    [SerializeField]
+    GameObject Prefab;
+    SpriteRenderer prefabSpriterenderer;
+    
     void Start()
     {
         goal = Random.Range(0, 5);
@@ -23,7 +23,7 @@ public class ItemsManager : MonoBehaviour
     }
     public int ItemsGnerator(List<MapPosition> itemMapPos)
     {
-        for(int i=2;i<7;i++)
+        for(var i=2;i<7;i++)
         {
             prefabSpriterenderer.sprite=ItemsSprite[i-2];
             Prefab.name="Item"+(i-1);
@@ -35,6 +35,5 @@ public class ItemsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //方向箭頭
     }
 }

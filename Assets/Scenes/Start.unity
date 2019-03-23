@@ -672,6 +672,39 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d23a0433ada2a7a479cac2899cbe8339, type: 3}
   - {fileID: 21300000, guid: 01df1b1f12ffdd64d9d942bdb3f3674f, type: 3}
   - {fileID: 21300000, guid: d6e705bef91a5ec44b441f188ae83684, type: 3}
+  InputResultImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  inputResultsSprite:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  GameResultImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  GameResultsSprite1:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  GameResultsSprite2:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  introImage: {fileID: 0}
+  ArrowImage:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1369924937
 Transform:
   m_ObjectHideFlags: 0
@@ -765,11 +798,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1369924936}
-        m_MethodName: ToScreen
-        m_Mode: 2
+        m_MethodName: OnStartGameBtnClick
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1530309652}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

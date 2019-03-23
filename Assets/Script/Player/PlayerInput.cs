@@ -28,20 +28,19 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (parent.iGameSystem.inputSystem.ConditionType==(int)EConditionType.INPUT)
+        if (parent.iGameSystem.GetConditionType==(int)EConditionType.INPUT)
         {
             GetPlayerInput();
         }
-        else if (parent.iGameSystem.inputSystem.ConditionType==(int)EConditionType.ANIMATION&&bflag)
+        else if (parent.iGameSystem.GetConditionType==(int)EConditionType.ANIMATION&&bflag)
         {
             bReset = false;
             inputResults = SendResult(inputs);
-            Debug.Log("SendResult");
             if(inputResults.Count>0)
                 parent.uIManager.ShowColorResult(inputResults,playerInputString);
             bflag=false; //已進入過animation
         }
-        else if (parent.iGameSystem.inputSystem.ConditionType==(int)EConditionType.READY&&!bflag)
+        else if (parent.iGameSystem.GetConditionType==(int)EConditionType.READY&&!bflag)
         {
             if(inputResults.Count>0)
                 parent.uIManager.ShowColorResult(playerInputString); //清除
@@ -60,28 +59,28 @@ public class PlayerInput : MonoBehaviour
    
         if (Input.GetButtonDown(playerInputString + "ORANGE"))
         {
-            inputs.Add(new PlayerInputInfo(EColor.ORANGE,parent.iGameSystem.musicManager.GetSongPosition,EInputCondition.NONE));
+            inputs.Add(new PlayerInputInfo(EColor.ORANGE,parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
         }
         if (Input.GetButtonDown(playerInputString + "GREEN"))
         {
-            inputs.Add(new PlayerInputInfo(EColor.GREEN, parent.iGameSystem.musicManager.GetSongPosition,EInputCondition.NONE));
+            inputs.Add(new PlayerInputInfo(EColor.GREEN, parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
         }
         if (Input.GetButtonDown(playerInputString + "PURPLE"))
         {
-            inputs.Add(new PlayerInputInfo(EColor.PURPLE, parent.iGameSystem.musicManager.GetSongPosition,EInputCondition.NONE));
+            inputs.Add(new PlayerInputInfo(EColor.PURPLE, parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
         }
 
         if (Input.GetButtonDown(playerInputString + "RED"))
         {
-            inputs.Add(new PlayerInputInfo(EColor.RED, parent.iGameSystem.musicManager.GetSongPosition,EInputCondition.NONE));
+            inputs.Add(new PlayerInputInfo(EColor.RED, parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
         }
         if (Input.GetButtonDown(playerInputString + "YELLOW"))
         {
-            inputs.Add(new PlayerInputInfo(EColor.YELLOW, parent.iGameSystem.musicManager.GetSongPosition,EInputCondition.NONE));
+            inputs.Add(new PlayerInputInfo(EColor.YELLOW, parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
         }
         if (Input.GetButtonDown(playerInputString + "BLUE"))
         {
-            inputs.Add(new PlayerInputInfo(EColor.BLUE, parent.iGameSystem.musicManager.GetSongPosition,EInputCondition.NONE));
+            inputs.Add(new PlayerInputInfo(EColor.BLUE, parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
         }
 
     }
