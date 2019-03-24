@@ -100,13 +100,17 @@ public class UIManager : MonoBehaviour
             else if (playerMapPosition.mapIndexR_Y - nearestItemMapPos.mapIndexR_Y < -2)
                 ShowArrowGo(k, 180.0f, 0f, -1f);
         }
-        else
+        else if (playerMapPosition.mapIndexC_X - nearestItemMapPos.mapIndexC_X < -2)
         {
             if (playerMapPosition.mapIndexR_Y - nearestItemMapPos.mapIndexR_Y > 2)
                 ShowArrowGo(k, -45.0f, 0.65f, 0.75f);
             else if (playerMapPosition.mapIndexR_Y - nearestItemMapPos.mapIndexR_Y > -2)
                 ShowArrowGo(k, -90.0f, 1f, 0f);
             else { ShowArrowGo(k, -135.0f, 0.65f, -0.75f); }
+        }
+        else
+        {
+            HideArrow(playername);
         }
     }
     void ShowArrowGo(int k, float z, float m, float n)
