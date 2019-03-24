@@ -19,15 +19,13 @@ public class UIManager : MonoBehaviour
     public Sprite[] GameResultsSprite2 = new Sprite[6];
     int currentIntroImageNumber = 1;
     [SerializeField]
-    Image introImage = null;
+    Image introImage=null;
     public RawImage[] ArrowImage = new RawImage[2];
-
 
     void Start()
     {
         if (GameManager.state == "Start")
         {
-            introImage = GameObject.Find("Introduction").GetComponent<Image>();
             screenHistory = new List<GameObject> { startScreen };
         }
     }
