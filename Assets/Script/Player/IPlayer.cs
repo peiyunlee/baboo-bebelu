@@ -47,6 +47,7 @@ public class IPlayer : MonoBehaviour
             GameManager.IsSongPlay = false;
             uIManager.ShowGameResult(GetPlayerInputString, iGameSystem.goal);
             iGameSystem.musicManager.StopSong();
+            anim.anim.SetBool("BWalk", true);
         }
     }
     public MapPosition WhichIsNearestItem(MapPosition playerMapPosition)

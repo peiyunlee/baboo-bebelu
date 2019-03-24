@@ -57,18 +57,18 @@ public class PlayerInput : MonoBehaviour
             bReset = true;
         }
    
-        if (Input.GetButtonDown(playerInputString + "ORANGE"))
-        {
-            inputs.Add(new PlayerInputInfo(EColor.ORANGE,parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
-        }
-        if (Input.GetButtonDown(playerInputString + "GREEN"))
-        {
-            inputs.Add(new PlayerInputInfo(EColor.GREEN, parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
-        }
-        if (Input.GetButtonDown(playerInputString + "PURPLE"))
-        {
-            inputs.Add(new PlayerInputInfo(EColor.PURPLE, parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
-        }
+        // if (Input.GetButtonDown(playerInputString + "ORANGE"))
+        // {
+        //     inputs.Add(new PlayerInputInfo(EColor.ORANGE,parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
+        // }
+        // if (Input.GetButtonDown(playerInputString + "GREEN"))
+        // {
+        //     inputs.Add(new PlayerInputInfo(EColor.GREEN, parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
+        // }
+        // if (Input.GetButtonDown(playerInputString + "PURPLE"))
+        // {
+        //     inputs.Add(new PlayerInputInfo(EColor.PURPLE, parent.iGameSystem.GetSongPosition,EInputCondition.NONE));
+        // }
 
         if (Input.GetButtonDown(playerInputString + "RED"))
         {

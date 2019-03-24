@@ -27,7 +27,7 @@ public class PlayerAnimation : MonoBehaviour
     List<MapPosition> stepsMapPosition = new List<MapPosition>();  //儲存每一步的Map
     List<Vector2> stepsPosition = new List<Vector2>();  //儲存每一步的座標
     List<float> stepsFace = new List<float>();  //儲存每一步的座標
-    Animator anim;
+    public Animator anim;
     [SerializeField]
     MapPosition playerMapPosition=new MapPosition();
     public MapPosition SetPlayerMapPosition {set {playerMapPosition=value;}}  //儲存idle時Map位置
@@ -66,6 +66,7 @@ public class PlayerAnimation : MonoBehaviour
                 case EPlayerState.IDLE:
                     stepsPosition.Clear();
                     stepsMapPosition.Clear();
+                    stepsFace.Clear();
                     inputResults.Clear();
                     bFcolorScan = true;
                     bScolorScan = true;
@@ -99,19 +100,20 @@ public class PlayerAnimation : MonoBehaviour
                                 anim.SetBool("BWalk", true);
                                 flag = true;
                                 parent.uIManager.HideArrow(parent.GetPlayerInputString);
+                                transform.rotation = Quaternion.Euler(.0f, .0f, stepsFace[i]);//轉向
                             }
                             if (flag)
                             {
                                 // CountStraightStep();
-                                transform.rotation = Quaternion.Euler(.0f, .0f, stepsFace[i]);//轉向
                                 // transform.position = Vector2.Lerp(transform.position, stepsPosition[i], 1f/(float)2*straightStepCount);//讀取位置lerp
                                 transform.position = Vector2.Lerp(transform.position, stepsPosition[i], 0.66f);//讀取位置lerp
                                 Debug.Log(stepsFace[i] + "," + transform.rotation.z);
                                 if (transform.position == new Vector3(stepsPosition[i].x, stepsPosition[i].y))
                                 {
                                     i++;
+                                    if(i<stepsPosition.Count)
+                                        transform.rotation = Quaternion.Euler(.0f, .0f, stepsFace[i]);
                                     // straightStepCount=1;
-                                    // Debug.Log("straightStepCount done");
                                 }
                                 // this.gameObject.transform.position =  Vector2.Lerp(transform.position,stepsPosition[stepsPosition.Count - 1],0.5f); //直接到達結果
                             }

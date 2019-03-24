@@ -22,17 +22,12 @@ public class UIManager : MonoBehaviour
     Image introImage = null;
     public RawImage[] ArrowImage = new RawImage[2];
 
-    void Awake()
-    {
-        if (GameManager.state == "Start")
-        {
-            introImage = GameObject.Find("Introduction").GetComponent<Image>();
-        }
-    }
+
     void Start()
     {
         if (GameManager.state == "Start")
         {
+            introImage = GameObject.Find("Introduction").GetComponent<Image>();
             screenHistory = new List<GameObject> { startScreen };
         }
     }
