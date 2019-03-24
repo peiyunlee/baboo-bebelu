@@ -26,11 +26,12 @@ public class Rolling : MonoBehaviour
                 r.x = 0;
                 flag=false;
             }
-            if(iGameSystem.GetSongPosition<=0.6f&&!flag){
+            if(iGameSystem.GetSongPosition<=0.1f&&!flag){
                 r.x = 0f;
                 flag=true;
             }
             this.img.uvRect = r;
+            Debug.Log(iGameSystem.GetSongPosition);
         }
     }
 }
