@@ -31,7 +31,6 @@ public class Rolling : MonoBehaviour
                 flag=true;
             }
             this.img.uvRect = r;
-            Debug.Log(iGameSystem.GetSongPosition);
         }
     }
 }
