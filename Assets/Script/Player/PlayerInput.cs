@@ -37,13 +37,13 @@ public class PlayerInput : MonoBehaviour
             bReset = false;
             inputResults = SendResult(inputs);
             if(inputResults.Count>0)
-                parent.uIManager.ShowColorResult(inputResults,playerInputString);
+                parent.uIMain.ShowColorResult(inputResults,playerInputString);
             bflag=false; //已進入過animation
         }
         else if (parent.iGameSystem.GetConditionType==(int)EConditionType.READY&&!bflag)
         {
             if(inputResults.Count>0)
-                parent.uIManager.ShowColorResult(playerInputString); //清除
+                parent.uIMain.ShowColorResult(playerInputString); //清除
             inputResults.Clear();
             bflag=true; //已進入過ready
         }

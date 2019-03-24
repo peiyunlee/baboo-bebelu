@@ -738,49 +738,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369924935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcbe72bd43341184fa53327639244b01, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f78ac354e0bdce4797294087d815705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startScreen: {fileID: 857782162}
-  returnBtn: {fileID: 0}
   screenHistory: []
   introImageHistory:
   - {fileID: 21300000, guid: d23a0433ada2a7a479cac2899cbe8339, type: 3}
   - {fileID: 21300000, guid: 7f75c9d2b5d917b46b888276eec30e0c, type: 3}
   - {fileID: 21300000, guid: d6e705bef91a5ec44b441f188ae83684, type: 3}
-  InputResultImage:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  inputResultsSprite:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  GameResultImage:
-  - {fileID: 0}
-  - {fileID: 0}
-  GameResultsSprite1:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  GameResultsSprite2:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   introImage: {fileID: 413326109}
-  ArrowImage:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1369924937
 Transform:
   m_ObjectHideFlags: 0

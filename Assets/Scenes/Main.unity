@@ -1132,13 +1132,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1654817199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcbe72bd43341184fa53327639244b01, type: 3}
+  m_Script: {fileID: 11500000, guid: a9022678c43abf244aeee7008c45f540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScreen: {fileID: 0}
   returnBtn: {fileID: 1129565047}
-  screenHistory: []
-  introImageHistory: []
   InputResultImage:
   - {fileID: 805348315}
   - {fileID: 256554667}
@@ -1168,7 +1165,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0dfed63a9b5924446b2404eea9f58b7a, type: 3}
   - {fileID: 21300000, guid: 3567beda7ce07be47bd956cbffea1578, type: 3}
   - {fileID: 21300000, guid: e6568b62adc9bc14f93d20c2b5ecbec7, type: 3}
-  introImage: {fileID: 0}
   ArrowImage:
   - {fileID: 62035538}
   - {fileID: 546496295}

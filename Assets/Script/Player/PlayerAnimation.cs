@@ -99,7 +99,7 @@ public class PlayerAnimation : MonoBehaviour
                             {
                                 anim.SetBool("BWalk", true);
                                 flag = true;
-                                parent.uIManager.HideArrow(parent.GetPlayerInputString);
+                                parent.uIMain.HideArrow(parent.GetPlayerInputString);
                                 transform.rotation = Quaternion.Euler(.0f, .0f, stepsFace[i]);//轉向
                             }
                             if (flag)
@@ -124,7 +124,7 @@ public class PlayerAnimation : MonoBehaviour
                             transform.rotation = Quaternion.Euler(0f, 0f, 90f);//轉向
                             if (flag)
                             {
-                                parent.uIManager.ShowArrow(currentStepMapPosition,parent.WhichIsNearestItem(currentStepMapPosition),parent.GetPlayerInputString);
+                                parent.uIMain.ShowArrow(currentStepMapPosition,parent.WhichIsNearestItem(currentStepMapPosition),parent.GetPlayerInputString);
                                 flag = false;
                             }
                         }

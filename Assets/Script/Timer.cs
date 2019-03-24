@@ -17,8 +17,11 @@ public class Timer : MonoBehaviour
 
     public void DecreaseTimer(){ 
         time_int -= 1;
-        if (time_int == -1) {
+        if (time_int == 0) {
             time_UI.text = "Start !";
+        }
+        else if(time_int == -1)
+        {
             CancelInvoke("DecreaseTimer");
             time_UI.text = "";
             GameManager.IsGameStartflag=true;

@@ -8,7 +8,7 @@ public class IPlayer : MonoBehaviour
     PlayerInput input;
     PlayerAnimation anim;
     public IGameSystem iGameSystem = null;
-    public UIManager uIManager = null;
+    public UIMain uIMain = null;
     [SerializeField]
     public List<PlayerInputInfo> InputResults { get { return input.InputResults; } }
     // List<MapPosition> m_mapStartPos = new List<MapPosition>();
@@ -25,7 +25,7 @@ public class IPlayer : MonoBehaviour
         anim.Parent = this;
         gameController = GameObject.Find("GameController");
         iGameSystem = gameController.GetComponent<IGameSystem>();
-        uIManager = gameController.GetComponent<UIManager>();
+        uIMain = gameController.GetComponent<UIMain>();
     }
 
     public void SetStartPos(List<MapPosition> mapStartPos)
@@ -45,9 +45,9 @@ public class IPlayer : MonoBehaviour
         {
             GameManager.IsGameWin = true;
             GameManager.IsSongPlay = false;
-            uIManager.ShowGameResult(GetPlayerInputString, iGameSystem.goal);
+            uIMain.ShowGameResult(GetPlayerInputString, iGameSystem.goal);
             iGameSystem.musicManager.StopSong();
-            anim.anim.SetBool("BWalk", true);
+            anim.anim.SetBool("BWalk", false);
         }
     }
     public MapPosition WhichIsNearestItem(MapPosition playerMapPosition)

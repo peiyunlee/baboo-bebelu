@@ -9,7 +9,7 @@ public class IGameSystem : MonoBehaviour
     public MusicManager musicManager;
     public InputSystem inputSystem;
     public ItemsManager itemsManager;
-    UIManager uIManager;
+    UIMain uIMain;
     Timer m_timer;
     [SerializeField]
     public List<MapPosition> mapStartPos = new List<MapPosition>();
@@ -22,7 +22,7 @@ public class IGameSystem : MonoBehaviour
     void Awake()
     {
         musicManager = GetComponent<MusicManager>();
-        uIManager = GetComponent<UIManager>();
+        uIMain = GetComponent<UIMain>();
         itemsManager = GetComponent<ItemsManager>();
         inputSystem = GetComponent<InputSystem>();
         m_timer = GetComponent<Timer>();
@@ -66,8 +66,8 @@ public class IGameSystem : MonoBehaviour
             RandomItems();
             goal=itemsManager.ItemsGnerator(mapStartPos);
             flag=true;
-            uIManager.ShowArrow(mapStartPos[0],iPlayer1.WhichIsNearestItem(mapStartPos[0]),"Player1");
-            uIManager.ShowArrow(mapStartPos[1],iPlayer2.WhichIsNearestItem(mapStartPos[1]),"Player2");
+            uIMain.ShowArrow(mapStartPos[0],iPlayer1.WhichIsNearestItem(mapStartPos[0]),"Player1");
+            uIMain.ShowArrow(mapStartPos[1],iPlayer2.WhichIsNearestItem(mapStartPos[1]),"Player2");
         }
         if (GameManager.IsGameEnd)       //換場景
             GameManager.m_GoState = 1;
