@@ -28,6 +28,7 @@ public class ItemsManager : MonoBehaviour
             prefabSpriterenderer.sprite=ItemsSprite[i-2];
             Prefab.name="Item"+(i-1);
             if(i==goal+2) Prefab.gameObject.tag="Goal";
+            else Prefab.gameObject.tag="Untagged";
             Instantiate(Prefab, new Vector2(1.8f * itemMapPos[i].mapIndexC_X, -1.8f * itemMapPos[i].mapIndexR_Y),new Quaternion(0,0,0,0)); 
         }
         return goal;
